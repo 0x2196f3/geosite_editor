@@ -5,7 +5,6 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"sort"
 	"strings"
 
 	"github.com/v2fly/v2ray-core/v5/app/router/routercommon"
@@ -147,11 +146,13 @@ func main() {
 		}
 	}
 
-	for _, entry := range geositeList.Entry {
-		sort.Slice(entry.Domain, func(i, j int) bool {
-			return entry.Domain[i].GetValue() < entry.Domain[j].GetValue()
-		})
-	}
+	/*
+		for _, entry := range geositeList.Entry {
+			sort.Slice(entry.Domain, func(i, j int) bool {
+				return entry.Domain[i].GetValue() < entry.Domain[j].GetValue()
+			})
+		}
+	*/
 
 	modifiedData, err := proto.Marshal(geositeList)
 	if err != nil {
